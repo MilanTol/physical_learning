@@ -1,5 +1,5 @@
-import matplotlib
-matplotlib.use("Agg")  # headless; avoids the GTK backend crash
+# import matplotlib
+# matplotlib.use("Agg")  # headless; avoids the GTK backend crash
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
@@ -7,8 +7,9 @@ from pathlib import Path
 from physical_learning import FlowNetwork, Task, cost, train, check_gradient
 from physical_learning.plotting import plot_network
 
-net = FlowNetwork.random_delaunay(n_side=10, seed=1)
-rng = np.random.default_rng(2)
+seed = 10
+net = FlowNetwork.random_delaunay(n_side=10, seed=seed)
+rng = np.random.default_rng(seed=seed)
 nodes = rng.permutation(net.N)
 task = Task(nodes[:2], [1.0, 0.0], nodes[2:3], [0.8])
 
